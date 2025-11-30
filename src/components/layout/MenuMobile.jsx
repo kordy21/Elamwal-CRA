@@ -224,13 +224,13 @@ const MenuMobile = ({
             );
           })}
 
-          <Link
+          {/* <Link
             to="#"
             className="block px-4 py-2 text-lg font-medium text-gray-800 duration-300 border-b-2 border-gray-100 bg-gray-50 hover:text-primary"
             // onClick={closeMobileMenu}
           >
             تسجيل الدخول
-          </Link>
+          </Link> */}
         </div>
 
         {/* Footer */}
@@ -250,10 +250,10 @@ const MenuMobile = ({
           </Button>
 
           {/* Language Toggle */}
-          <div className="flex items-center gap-2 cursor-pointer">
+          {/* <div className="flex items-center gap-2 cursor-pointer">
             <img className="w-6 h-auto" alt="Arabic" src={USA} />
             <span className="text-base font-medium text-gray-600">English</span>
-          </div>
+          </div> */}
         </div>
         <div className="mt-10 border-gray-100 bg-gray-50">
           <div className="p-5 text-xs text-center text-black md:text-sm">
