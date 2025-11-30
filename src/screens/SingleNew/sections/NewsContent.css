@@ -1,0 +1,87 @@
+.content-ar h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  /* margin: 1rem 0; */
+}
+
+.content-ar h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* margin: 0.75rem 0; */
+}
+
+.content-ar h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  /* margin: 0.75rem 0; */
+}
+
+.content-ar h4 {
+  font-size: 1.125rem;
+  font-weight: 500;
+  /* margin: 0.5rem 0; */
+}
+
+.content-ar h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  /* margin: 0.5rem 0; */
+}
+
+.content-ar h6 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  /* margin: 0.5rem 0; */
+}
+
+.content-ar p {
+  font-size: 1rem;
+  line-height: 1.8;
+  /* margin-bottom: 1rem; */
+}
+
+.content-ar ul {
+  list-style: disc inside;
+  /* margin: 0.5rem 0 1rem 1.5rem; */
+}
+
+.content-ar ol {
+  list-style: decimal inside;
+  /* margin: 0.5rem 0 1rem 1.5rem; */
+}
+
+/* .content-ar li {
+  margin-bottom: 0.25rem;
+} */
+
+.content-ar img {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+  border-radius: 0.5rem;
+}
+
+.content-ar a {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.content-ar a:hover {
+  color: #00A651;
+}
+
+.content-ar blockquote {
+  border-right: 4px solid #ccc;
+  padding-right: 1rem;
+  /* margin: 1rem 0; */
+  font-style: italic;
+  color: #00A651;
+}
+
+.content-ar strong {
+  font-weight: bold;
+}
+
+.content-ar em {
+  font-style: italic;
+}

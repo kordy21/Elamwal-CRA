@@ -1,0 +1,196 @@
+/* @import "./assets/fonts/cairo.css"; */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @font-face {
+  font-family: "Cairo";
+  src: url("./assets/fonts/Cairo/cairo-v30-arabic_latin-regular.woff2")
+      format("woff2"),
+    url("./assets/fonts/Cairo/cairo-v30-arabic_latin-regular.woff")
+      format("woff");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+} */
+
+body {
+  margin: 0;
+  font-family: "Tajawal", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
+}
+@layer base {
+  :root {
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --radius: 0.5rem;
+  }
+
+  /* * {
+    font-family: 'Cairo', sans-serif;
+  } */
+
+  html {
+    direction: rtl;
+  }
+
+  /* body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+  } */
+
+  @media (min-width: 640px) {
+    .container {
+      padding: 0 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding: 0 4rem;
+    }
+  }
+}
+
+/* Swiper Custom Styles */
+.stories-swiper .swiper-pagination-bullet,
+.opinion-swiper .swiper-pagination-bullet,
+.hero-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.stories-swiper .swiper-pagination-bullet-active,
+.opinion-swiper .swiper-pagination-bullet-active,
+.hero-swiper .swiper-pagination-bullet-active {
+  background: #00a651;
+}
+
+.stories-swiper .swiper-pagination,
+.opinion-swiper .swiper-pagination,
+.hero-swiper .swiper-pagination {
+  position: static !important;
+  margin-top: 1.5rem;
+}
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-slideDown {
+  animation: slideDown 0.3s ease forwards;
+}
+.banks-swiper .swiper-pagination {
+  position: absolute;
+  bottom: 6.5rem;
+  left: 25%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  z-index: 20;
+}
+
+/* bullets */
+.banks-swiper .swiper-pagination-bullet {
+  width: 40px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.4);
+  opacity: 1;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.banks-swiper .swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.1);
+}
+
+.banks-swiper .swiper-pagination-bullet-active {
+  background: #00a651;
+  transform: scale(1.1);
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .banks-swiper .swiper-pagination-bullet {
+    width: 24px;
+    height: 8px;
+    border-radius: 4px;
+  }
+}
+/* base style for all bullets */
+.swiper-pagination-bullet.custom-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #00a651;
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+/* when active */
+.swiper-pagination-bullet.custom-bullet.swiper-pagination-bullet-active {
+  width: 20px;
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* ===== Scrollbar Global Style ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00a651 #f1f1f1;
+}
+@media (max-width: 768px) {
+  * {
+    scrollbar-width: none !important; /* Firefox */
+  }
+  *::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge */
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 22s linear infinite;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation-duration: 15s;
+  }
+}
