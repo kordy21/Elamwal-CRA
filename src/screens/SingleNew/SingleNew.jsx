@@ -35,11 +35,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { BreadcrumbCategories } from "../../components/ui/BreadcrumbCategories";
 import { formatArabicDate } from "../../utils/formatArabicDate";
 
-  const ratesData = [
-    { currency: "EGP", label: "الدولار الأمريكي", price: 47.45, change: -0.2 },
-    { currency: "EGP", label: "اليورو", price: 55.03, change: 0.1 },
-    { currency: "EGP", label: "الجنيه الإسترليني", price: 62.8, change: 0.3 },
-  ];
+const ratesData = [
+  { currency: "EGP", label: "الدولار الأمريكي", price: 47.45, change: -0.2 },
+  { currency: "EGP", label: "اليورو", price: 55.03, change: 0.1 },
+  { currency: "EGP", label: "الجنيه الإسترليني", price: 62.8, change: 0.3 },
+];
 
 const commentsData = [
   {
