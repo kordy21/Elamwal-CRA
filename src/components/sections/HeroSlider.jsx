@@ -48,15 +48,15 @@ export const HeroSlider = ({
             >
               {data?.map((news) => (
                 <SwiperSlide key={news.id}>
-                  <Card
-                    className="relative flex flex-col h-[300px] lg:h-[450px] items-end justify-between px-6 md:px-[52px] py-6 md:py-9 w-full lg:rounded-md rounded-lg  border-0 overflow-hidden"
-                    style={{
-                      backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url(${news?.image})`,
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                    }}
-                  >
+                  <Card className="relative flex flex-col h-[300px] lg:h-[450px] items-end justify-between px-6 md:px-[52px] py-6 md:py-9 w-full lg:rounded-md rounded-lg border-0 overflow-hidden">
+                    <img
+                      src={news?.image}
+                      alt={news?.title_AR}
+                      className="absolute inset-0 object-cover w-full h-full"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,0,0,0.5)]"></div>
+
                     <CardContent className="relative z-10 flex flex-col items-start justify-between w-full h-full p-0">
                       <div className="flex items-center justify-between w-full gap-3">
                         {tags ? (
@@ -76,11 +76,10 @@ export const HeroSlider = ({
                               {displayCategory
                                 ? news?.parentSubCategory?.name_AR
                                 : news?.Tags[news?.Tags?.length - 1]?.name_AR}
-
-                              {/* {news?.Tags[news?.Tags?.length - 1]?.name_AR} */}
                             </button>
                           </Badge>
                         )}
+
                         {showButton && (
                           <GreenButton
                             icon={CameraIcon}

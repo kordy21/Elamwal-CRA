@@ -11,7 +11,11 @@ const CurrentDate = () => {
     hour: "numeric",
     minute: "numeric",
   };
-  const gregorianDate = now.toLocaleString("ar-EG", gregorianOptions);
+
+  let gregorianDate = now.toLocaleString("ar-EG", gregorianOptions);
+
+
+  gregorianDate = gregorianDate.replace(/^([^\d،]+)،/, "$1");
 
   const islamicOptions = {
     day: "numeric",

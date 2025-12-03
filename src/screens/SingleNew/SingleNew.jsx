@@ -126,6 +126,58 @@ export const SingleNew = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // useEffect(() => {
+  //   if (!loading && selectedPost) {
+  //     const originalUrl = window.location.href;
+  //     const baseUrl = originalUrl.substring(0, originalUrl.lastIndexOf("/"));
+  //     const slugUrl = `${baseUrl}/${encodeURIComponent(selectedPost.slug)}`;
+
+  //     if (!isNaN(postSlug)) {
+  //       window.history.replaceState({}, "", slugUrl);
+  //     }
+  //   }
+  // }, [loading, selectedPost]);
+
+  useEffect(() => {
+    if (!loading && selectedPost) {
+      const originalUrl = window.location.href;
+      const baseUrl = originalUrl.substring(0, originalUrl.lastIndexOf("/"));
+      const slugUrl = `${baseUrl}/${encodeURIComponent(selectedPost.slug)}`;
+      const idUrl = `${baseUrl}/${selectedPost.id}`;
+
+      // لو داخل بالـ ID → اعرض الـ slug
+      if (!isNaN(postSlug)) {
+        window.history.replaceState({}, "", slugUrl);
+      }
+
+      const handleCopy = (e) => {
+        try {
+          e.preventDefault();
+
+          // إجبار النص المختصر في الكليب بورد
+          if (e.clipboardData) {
+            e.clipboardData.setData("text/plain", idUrl);
+          } else if (window.clipboardData) {
+            window.clipboardData.setData("Text", idUrl);
+          }
+
+          // نرجع الـ slug مباشرة
+          window.history.replaceState({}, "", slugUrl);
+
+          return false;
+        } catch (err) {
+          console.error("Copy override failed:", err);
+        }
+      };
+
+      document.addEventListener("copy", handleCopy);
+
+      return () => {
+        document.removeEventListener("copy", handleCopy);
+      };
+    }
+  }, [loading, selectedPost]);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-[100vh]">

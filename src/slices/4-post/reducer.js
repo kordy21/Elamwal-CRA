@@ -46,7 +46,8 @@ const postsSlice = createSlice({
 
     builder.addCase(getPostsBySubCategory.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.payload?.error || action.error.message;
+      state.posts=[]
+      state.error = action.payload?.error || action.error.message || [];
     });
 
     builder.addCase(getPostsBySubCategory.fulfilled, (state, action) => {

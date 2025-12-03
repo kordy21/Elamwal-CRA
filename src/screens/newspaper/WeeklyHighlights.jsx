@@ -13,7 +13,7 @@ const WeeklyHighlights = ({ newspapers }) => {
 
   return (
     <div className="grid grid-cols-1 gap-6 pb-8 sm:grid-cols-2 lg:grid-cols-2">
-      {newspapers.map((paper, index) => (
+      {newspapers?.map((paper, index) => (
         <Link
           key={index}
           to={paper?.slug || "#"}

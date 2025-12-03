@@ -7,6 +7,7 @@ import WeeklyHighlights from "./WeeklyHighlights";
 import { Footer } from "../../components/layout/Footer";
 import { getPostsBySubCategory } from "../../slices/4-post/thunk";
 import { useDispatch, useSelector } from "react-redux";
+import ComingSoon from "../CommingSoon/ComingSoon";
 
 const NewspaperComponent = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -47,7 +48,10 @@ const NewspaperComponent = () => {
       </div>
     );
   }
-  // console.log(postsBySubCategory["newspaper"]);
+  console.log(postsBySubCategory["newspaper"]);
+  if (postsBySubCategory["newspaper"] === undefined) {
+    return <ComingSoon />;
+  }
   return (
     <div className="bg-custom">
       <HeaderLayout />

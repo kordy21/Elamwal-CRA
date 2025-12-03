@@ -75,7 +75,7 @@ export const getPostsBySubCategory = createAsyncThunk(
           page ? page : 1
         }&limit=${limit}&type=${type}`
       );
-      // console.log(response.data);
+      console.log(response.data);
       // console.log(
       //   `${API_URL}/getPostsBySubCategory?slug_subCategory=${slug}&page=${
       //     page ? page : 1
