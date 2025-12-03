@@ -226,7 +226,7 @@ export const Navbar = () => {
                         {
                           label: "تواصل معنا",
                           value: "contact",
-                          href: "/about-us",
+                          href: "/contact-us",
                         },
                       ]
                     : [];
@@ -318,12 +318,12 @@ export const Navbar = () => {
                 className=""
               />
 
-              {/* <UserMenu
+              <UserMenu
                 isLoggedIn={false}
                 user={{ name: "محمد خالد", avatar: User }}
               />
 
-              <LanguageDropdown
+              {/* <LanguageDropdown
                 trigger={
                   <div className="flex items-center justify-center gap-1 md:gap-2 px-0 py-2.5">
                     <img className="w-6 h-auto" alt="Vector" src={EG} />
@@ -439,7 +439,7 @@ export const Navbar = () => {
                         {
                           label: "تواصل معنا",
                           value: "contact",
-                          href: "/about-us",
+                          href: "/contact-us",
                         },
                       ]
                     : [];
@@ -532,10 +532,10 @@ export const Navbar = () => {
               {/* <div className="cursor-pointer">
                 <UserIcon className="w-6 h-6 text-gray-500 duration-300 hover:text-primary" />
               </div> */}
-              {/* <UserMenu
+              <UserMenu
                 isLoggedIn={true}
                 user={{ name: "محمد خالد", avatar: User }}
-              /> */}
+              />
 
               {/* <LanguageDropdown
                 trigger={

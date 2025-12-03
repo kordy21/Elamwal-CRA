@@ -11,7 +11,6 @@ import { faCaretLeft, faCaretRight } from "@fortawesome/free-solid-svg-icons";
 
 const AdSliderNav = () => {
   const ads = [Ad1, Ad1, Ad1];
-
   return (
     <section className="relative ">
       {/* Custom Buttons */}
@@ -34,7 +33,6 @@ const AdSliderNav = () => {
         {ads.map((ad, index) => (
           <SwiperSlide key={index}>
             <a href="/">
-
             <div className="flex items-center justify-center w-full transition-shadow border border-gray-100 rounded-md cursor-pointer hover:shadow-md">
               <img
                 src={ad}

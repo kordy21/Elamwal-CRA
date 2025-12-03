@@ -89,7 +89,7 @@ const MenuMobile = ({
                     {
                       label: "تواصل معنا",
                       value: "contact",
-                      href: "/about-us",
+                      href: "/contact-us",
                     },
                   ]
                 : [];

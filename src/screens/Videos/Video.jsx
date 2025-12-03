@@ -42,7 +42,7 @@ export const Video = () => {
     } else {
       setLimit(25);
     }
-  }, []);
+  }, [subcategorySlug]);
 
   const organizePostsBySection = (posts) => {
     if (!posts || posts.length === 0) return null;
@@ -68,7 +68,7 @@ export const Video = () => {
       .unwrap()
       .then(() => setLoading(false))
       .catch(() => setLoading(false));
-  }, [dispatch]);
+  }, [dispatch, subcategorySlug]);
 
   useEffect(() => {
     const handleScroll = () => {

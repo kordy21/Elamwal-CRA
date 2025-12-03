@@ -200,7 +200,7 @@ export const Categorey = ({ other }) => {
   if (postsToDisplay?.length === 0 || !organizedPosts) {
     return <ComingSoon />;
   }
-  // console.log(categoriesData[subcategorySlug]?.[0]?.id);
+  // console.log(organizedPosts);
   return (
     <div className="w-full min-h-screen bg-[#F8F8FA]" dir="rtl">
       <div className="relative w-full bg-[#F8F8FA]">
@@ -287,17 +287,27 @@ export const Categorey = ({ other }) => {
                   categorey={other}
                 />
                 {/* Show More Button */}
-                {hasMore ||
-                  organizedPosts.Section1.length === 0 ||
-                  organizedPosts.Section2.length === 0 ||
-                  (organizedPosts.Section3.length === 0 && !loading && (
+                {/* {hasMore ||
+                  organizedPosts.Section1?.length === 0 ||
+                  organizedPosts.Section2?.length === 0 ||
+                  (organizedPosts.Section3?.length === 0 && !loading && (
                     <div className="flex justify-center mt-6">
                       <LoadMoreButton
                         onClick={handleLoadMore}
                         text="عرض المزيد"
                       />
                     </div>
-                  ))}
+                  ))} */}
+                {hasMore &&
+                  !(allPosts?.length === meta?.filteredCount) &&
+                  !loading && (
+                    <div className="flex justify-center mt-6">
+                      <LoadMoreButton
+                        onClick={handleLoadMore}
+                        text="عرض المزيد"
+                      />
+                    </div>
+                  )}
               </section>
             </main>
 

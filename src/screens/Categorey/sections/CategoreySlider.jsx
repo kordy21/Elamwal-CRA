@@ -36,12 +36,21 @@ export const CategoreySlider = ({ sliderArticles, title, other }) => {
                 <Card
                   className="relative flex flex-col h-[300px] lg:h-[400px] items-end justify-between px-6 md:px-[52px] py-6 md:py-9 w-full lg:rounded-t-md rounded-t-lg border-0 overflow-hidden"
                   style={{
-                    backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url(${article?.image})`,
+                    // backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%), url(${encodeURI(
+                    //   article?.image
+                    // )})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                   }}
-                ></Card>
+                >
+                  {/* {" "} */}
+                  <img
+                    src={encodeURI(article?.image)}
+                    alt={article?.title_AR}
+                    className="absolute top-0 left-0 object-cover w-full h-full"
+                  />
+                </Card>
 
                 <CardContent className="relative z-10 flex flex-col items-start justify-between w-full h-full gap-4 p-6 bg-black rounded-b-md">
                   <div className="flex flex-col items-start justify-end w-full">
