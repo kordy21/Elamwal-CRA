@@ -479,9 +479,9 @@ export const Footer = () => {
           </h1>
           <div className="overflow-hidden group md:w-[95%] w-[75%]">
             <div className="animate-marquee flex gap-8 group-hover:[animation-play-state:paused]">
-              {[...Array(2)].map((_, repeatIndex) => (
+              {[...Array(2)]?.map((_, repeatIndex) => (
                 <div key={repeatIndex} className="flex gap-8">
-                  {featuredPosts.map((item, index) => (
+                  {featuredPosts?.map((item, index) => (
                     <div
                       key={`${repeatIndex}-${index}`}
                       className="flex items-center gap-2 min-w-max"
