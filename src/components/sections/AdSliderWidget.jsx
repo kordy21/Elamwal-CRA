@@ -14,6 +14,7 @@ import ad2_1 from "../../assets/images/ad2_1.webp";
 import ad2_2 from "../../assets/images/ad2_2.webp";
 import ad2_3 from "../../assets/images/ad2_3.webp";
 import ad2_4 from "../../assets/images/ad2_4.webp";
+import ad2_5 from "../../assets/images/ad2_5.webp";
 import ad3_1 from "../../assets/images/ad3_1.webp";
 
 const AdSliderWidget = ({ sliderId }) => {
@@ -22,7 +23,7 @@ const AdSliderWidget = ({ sliderId }) => {
     // 2: [ad2_1, ad2_2, ad2_3, ad2_4],
     // 3: [ad3_1, ad2, ad3, ad4],
     1: [ad1, ad2, ad3],
-    2: [ad4, ad2_1, ad2_2],
+    2: [ad4, ad2_1, ad2_2, ad2_5],
     3: [ad3_1, ad2_3, ad2_4],
   };
 

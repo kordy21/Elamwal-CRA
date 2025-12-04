@@ -12,6 +12,8 @@ import {
 import { ChevronUpIcon } from "@heroicons/react/24/outline";
 import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import "swiper/css";
+import { useDispatch, useSelector } from "react-redux";
+import { getPosts } from "../../slices/4-post/thunk";
 const footerLinks = [
   {
     title: "الأموال",
@@ -278,6 +280,22 @@ const news = [
 ];
 export const Footer = () => {
   const [showScroll, setShowScroll] = useState(false);
+  const dispatch = useDispatch();
+  const [loading, setLoading] = useState(true);
+  const { postsByParams } = useSelector((state) => state.Posts);
+
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getPosts({ is_featured: 1, type: "default", limit: 5 }))
+      .unwrap()
+      .then(() => setLoading(false))
+      .catch(() => setLoading(false));
+  }, [dispatch]);
+
+  const featuredPosts =
+    postsByParams[
+      JSON.stringify({ is_featured: 1, type: "default", limit: 5 })
+    ];
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY === 0) {
@@ -290,6 +308,7 @@ export const Footer = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  console.log(featuredPosts);
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -462,7 +481,7 @@ export const Footer = () => {
             <div className="animate-marquee flex gap-8 group-hover:[animation-play-state:paused]">
               {[...Array(2)].map((_, repeatIndex) => (
                 <div key={repeatIndex} className="flex gap-8">
-                  {news.map((item, index) => (
+                  {featuredPosts.map((item, index) => (
                     <div
                       key={`${repeatIndex}-${index}`}
                       className="flex items-center gap-2 min-w-max"
@@ -472,7 +491,7 @@ export const Footer = () => {
                         className="w-2 text-[#D13232]"
                       />
                       <span className="text-white duration-300 cursor-pointer hover:text-black">
-                        {item}
+                        {item.title_AR}
                       </span>
                     </div>
                   ))}

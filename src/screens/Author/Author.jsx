@@ -15,67 +15,6 @@ import { getPosts, getPostsByProfileId } from "../../slices/4-post/thunk";
 import NewsContent from "../SingleNew/sections/NewsContent";
 import SpotlightNews from "../../components/ui/SpotlightNews";
 
-// const newsArticles = [
-//   {
-//     id: 1,
-//     image: man,
-//     category: "مركز الاموال",
-//     categoryColor: "bg-[#2a3eb10d] text-[#b1592a]",
-//     title: "اجتماع فريق عمل مؤسسة شباب القادة لمناقشة خطة عمل برامج ...",
-//   },
-//   {
-//     id: 2,
-//     image: man2,
-//     category: "بترول و طاقة",
-//     categoryColor: "bg-[#4952870d] text-[#485186]",
-//     title: "انخفاض أسعار النفط لادنى مستوى في 4 سنوات",
-//   },
-//   {
-//     id: 3,
-//     image: banlmasr,
-//     category: "فنون",
-//     categoryColor: "bg-[#b12aa80d] text-[#b12aa8]",
-//     title: "جلسة تصوير تتحول لوصلة رقص.. تارا و أحمد مالك يشعلان السوشيال ...",
-//   },
-//   {
-//     id: 4,
-//     image: banlmasr,
-//     category: "بترول و طاقة",
-//     categoryColor: "bg-[#4952870d] text-[#485186]",
-//     title:
-//       "مصر ترفع أسعار البنزين والسولار وتؤكد: فجوة الوقود مستمرة والدولة...",
-//   },
-//   {
-//     id: 5,
-//     image: man,
-//     category: "مركز الاموال",
-//     categoryColor: "bg-[#2a3eb10d] text-[#b1592a]",
-//     title: "اجتماع فريق عمل مؤسسة شباب القادة لمناقشة خطة عمل برامج ...",
-//   },
-//   {
-//     id: 6,
-//     image: man2,
-//     category: "بترول و طاقة",
-//     categoryColor: "bg-[#4952870d] text-[#485186]",
-//     title: "انخفاض أسعار النفط لادنى مستوى في 4 سنوات",
-//   },
-//   {
-//     id: 7,
-//     image: banlmasr,
-//     category: "فنون",
-//     categoryColor: "bg-[#b12aa80d] text-[#b12aa8]",
-//     title: "جلسة تصوير تتحول لوصلة رقص.. تارا و أحمد مالك يشعلان السوشيال ...",
-//   },
-//   {
-//     id: 8,
-//     image: banlmasr,
-//     category: "بترول و طاقة",
-//     categoryColor: "bg-[#4952870d] text-[#485186]",
-//     title:
-//       "مصر ترفع أسعار البنزين والسولار وتؤكد: فجوة الوقود مستمرة والدولة...",
-//   },
-// ];
-
 const Author = () => {
   const [scrolled, setScrolled] = useState(false);
   const { slugAuthor } = useParams();
@@ -85,6 +24,8 @@ const Author = () => {
   const { selectedProfile, loading, error } = useSelector((s) => s.Profiles);
   const [profileId, setProfileId] = useState(selectedProfile?.id);
 
+  const dispatch = useDispatch();
+  const { posts, loadingPosts, meta } = useSelector((state) => state.Posts);
   const maxLoads = 3;
 
   const handleLoadMore = () => {
@@ -111,14 +52,15 @@ const Author = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const dispatch = useDispatch();
-  const { posts, loadingPosts, currentPage, totalPages } = useSelector(
-    (state) => state.Posts
-  );
   const [postPage, setPostPage] = useState(1);
   const [allPosts, setAllPosts] = useState([]);
   const postLimit = 8;
-  // console.log("posts", slugAuthor);
+  console.log("posts", selectedProfile);
+  useEffect(() => {
+    if (selectedProfile?.id) {
+      setProfileId(selectedProfile.id);
+    }
+  }, [selectedProfile]);
   useEffect(() => {
     const fetchData = async () => {
       if (!slugAuthor) return;
@@ -172,7 +114,10 @@ const Author = () => {
       </div>
     );
   }
-  // console.log("selectedProfile", profileId);
+  console.log("currentPage", meta);
+  const bio = selectedProfile?.biography_AR || "";
+  const cleanBio = bio.replace(/<[^>]*>/g, "").trim();
+
   return (
     <section className="bg-[#F8F8FA]">
       <HeaderLayout />
@@ -204,11 +149,15 @@ const Author = () => {
             category={selectedProfile?.title_AR}
             link="#"
           />
-          <MainTitle
-            title={`تفاصيل عن ${selectedProfile?.name_AR}`}
-            noMore={true}
-          />
-          <NewsContent content={selectedProfile?.biography_AR} />
+          {cleanBio && (
+            <>
+              <MainTitle
+                title={`تفاصيل عن ${selectedProfile?.name_AR}`}
+                noMore={true}
+              />
+              <NewsContent content={selectedProfile?.biography_AR} />
+            </>
+          )}
           {/* <MainTitle title="تواصل مع الكاتب" noMore={true} /> */}
           <div className="block lg:hidden ">
             <AdSliderWidget sliderId="1" />
@@ -220,11 +169,14 @@ const Author = () => {
               <SpotlightNews articles={allPosts} />
               {/* {loadCount < maxLoads && <LoadMoreButton onClick={handleLoadMore} />} */}
               {/* <>{console.log(allPosts?.length === meta?.count)}</> */}
-              {!(allPosts?.length <= postLimit) && !loading && (
+              {/* {meta?.count > allPosts.length > 0 && (
                 <div className="flex justify-center mt-6">
-                  <LoadMoreButton onClick={handleLoadMore} text="عرض المزيد" />
+                  <LoadMoreButton
+                    onClick={handleLoadMorePosts}
+                    text="عرض المزيد"
+                  />
                 </div>
-              )}
+              )} */}
             </>
           )}
           <div className="block lg:hidden ">
